@@ -1,7 +1,9 @@
 package scanner.barcode.android.com.barcodescanner;
 
 
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.preference.PreferenceManager;
 
 
 import org.json.simple.JSONArray;
@@ -44,8 +46,12 @@ public class DataMan  {
     }*/
 
 
-    public Data getTransactions(String barScan){
+    public Data getTransactions(String barScan, String server, String rest_method){
+
         Data validTransactionDetails = null;
+
+        System.out.println("This is the server ::: "+server);
+        System.out.println("This is the rest ::: "+rest_method);
         try{
             System.out.println("Barcode Scan: "+barScan);
             OkHttpClient client = new OkHttpClient();
@@ -111,10 +117,10 @@ public class DataMan  {
             item_data.setModel();
             item_data.setAssemblyDate();
             item_data.setOwner();*/
-            if(transactionResult.size()>0){
+           /* if(transactionResult.size()>0){
                 System.out.print("Im here");
                 isValid = true;
-            }
+            }*/
         }catch(Exception e){
             e.printStackTrace();
         }

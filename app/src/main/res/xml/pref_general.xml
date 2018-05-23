@@ -15,7 +15,7 @@
         android:capitalize="words"
         android:defaultValue="@string/pref_default_display_name"
         android:inputType="textCapWords"
-        android:key="example_text"
+        android:key="server_name"
         android:maxLines="1"
         android:selectAllOnFocus="true"
         android:singleLine="true"
@@ -24,7 +24,7 @@
         android:defaultValue="0"
         android:entries="@array/pref_example_list_titles"
         android:entryValues="@array/pref_example_list_values"
-        android:key="example_list"
+        android:key="rest_method"
         android:negativeButtonText="@null"
         android:positiveButtonText="@null"
         android:title="@string/pref_title_add_friends_to_messages" />

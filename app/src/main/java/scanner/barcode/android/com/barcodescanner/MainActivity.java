@@ -3,7 +3,9 @@ package scanner.barcode.android.com.barcodescanner;
 import android.content.DialogInterface;
 import android.content.Intent;
 
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -68,13 +70,20 @@ public class MainActivity extends AppCompatActivity implements ZXingScannerView.
     @Override
     public void handleResult(final Result result)  {
        // Toast.makeText(getApplicationContext(),result.getText(),Toast.LENGTH_SHORT).show();
+
+
         AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
         alertBuilder.setTitle("Scan Result");
         alertBuilder.setMessage(result.getText());
         alertBuilder.setPositiveButton("Validate", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                new ValidateBarcodeScan().execute(result.toString());
+                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                String server = preferences.getString("server_name", "http://0.0.0.0");
+                String rest_method = preferences.getString("rest_method", "get");
+                System.out.println(server);
+                String [] result_array = new String[]{server, rest_method, result.toString()};
+                new ValidateBarcodeScan().execute(result_array);
             }
         });
         AlertDialog alert = alertBuilder.create();
@@ -123,7 +132,7 @@ public class MainActivity extends AppCompatActivity implements ZXingScannerView.
             Data isValid = null ;
             try {
                 System.out.println("Background Params: "+params.toString());
-                isValid = new DataMan().getTransactions(params[0].toString());
+                isValid = new DataMan().getTransactions(params[2].toString(), params[1].toString(), params[0].toString());
                 Thread.sleep(2000);
 
             } catch (InterruptedException e) {

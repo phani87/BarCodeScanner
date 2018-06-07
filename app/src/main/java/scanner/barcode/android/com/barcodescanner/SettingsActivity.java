@@ -192,6 +192,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             // guidelines.
             bindPreferenceSummaryToValue(findPreference("server_name"));
             bindPreferenceSummaryToValue(findPreference("rest_method"));
+            //bindPreferenceSummaryToValue(findPreference("server_port"));
         }
 
         @Override

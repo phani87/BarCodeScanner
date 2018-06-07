@@ -4,23 +4,53 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    android:background="@color/background_color"
+    android:background="@color/background_color_dark"
     tools:context=".MainActivity">
 
 
-    <Button
+    <!--<Button
         android:layout_width="149dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_marginBottom="29dp"
         android:layout_marginEnd="24dp"
-        android:background="@drawable/rounded_button"
         android:onClick="scan"
-        android:text="Scan"
+        android:text="@string/scan_button"
         android:textColor="?attr/colorBackgroundFloating"
+        android:background="@drawable/rounded_button"
         android:textStyle="bold" />
+-->
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/add_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/scan_button"
+        android:layout_gravity="end|bottom"
+        android:layout_marginEnd="88dp"
+        android:layout_marginRight="10dp"
+        android:onClick="add"
+        android:src="@drawable/add"
+        app:backgroundTint="@android:color/holo_red_dark"
+        app:elevation="14dp" />
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/scan_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_gravity="end|bottom"
+        android:layout_marginBottom="25dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginEnd="33dp"
+        android:onClick="scan"
+        android:src="@drawable/camera"
+        app:backgroundTint="@android:color/holo_red_dark"
+        app:elevation="14dp" />
 
     <!-- <TextView
         android:layout_width="fill_parent"

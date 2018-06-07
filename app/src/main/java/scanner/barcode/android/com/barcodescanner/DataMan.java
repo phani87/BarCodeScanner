@@ -46,19 +46,24 @@ public class DataMan  {
     }*/
 
 
-    public Data getTransactions(String barScan, String server, String rest_method){
+    public Data getTransactions(String barScan, String server, String port, String rest_method){
 
         Data validTransactionDetails = null;
 
         System.out.println("This is the server ::: "+server);
-        System.out.println("This is the rest ::: "+rest_method);
+        System.out.println("This is the rest method ::: "+rest_method);
+        System.out.println("This is the port ::: " + port);
         try{
             System.out.println("Barcode Scan: "+barScan);
+            System.out.println("REST API ::: "+server+":"+port+"/bcsgw/rest/v1/transaction/query");
             OkHttpClient client = new OkHttpClient();
             MediaType mediaType = MediaType.parse("application/json");
-            RequestBody body = RequestBody.create(mediaType, "{\"channel\":\"judechannel\",\"chaincode\":\"carTrace\",\"method\":\"getHistoryForRecord\",\"args\":[\""+barScan+"\"],\"chaincodeVer\":\"v1\"}");
+            //RequestBody body = RequestBody.create(mediaType, "{\"channel\":\"judechannel\",\"chaincode\":\"carTrace\",\"method\":\"getHistoryForRecord\",\"args\":[\""+barScan+"\"],\"chaincodeVer\":\"v1\"}");
+            RequestBody body = RequestBody.create(mediaType, "{\"channel\":\"ownerchannel\",\"chaincode\":\"postal1\",\"method\":\"getHistoryForRecord\",\"args\":[\""+barScan+"\"],\"chaincodeVer\":\"v2\"}");
+
+
             Request request = new Request.Builder()
-                    .url("http://129.146.152.37:3100/bcsgw/rest/v1/transaction/query")
+                    .url(server+":"+port+"/bcsgw/rest/v1/transaction/query")
                     .post(body)
                     .addHeader("Content-Type", "application/json")
                     .addHeader("Cache-Control", "no-cache")
@@ -78,6 +83,59 @@ public class DataMan  {
         }
 
         return validTransactionDetails;
+    }
+
+    public String addNewProduct(Data data, String server, String port, String rest_method){
+
+        String isAddProductSuccess = "";
+
+
+        try{
+            System.out.println("Barcode Scan: "+data.getLuggageScanId());
+            System.out.println("REST API ::: "+server+":"+port+"/bcsgw/rest/v1/transaction/invocation");
+            OkHttpClient client = new OkHttpClient();
+            MediaType mediaType = MediaType.parse("application/json");
+            //RequestBody body = RequestBody.create(mediaType, "{\"channel\":\"judechannel\",\"chaincode\":\"carTrace\",\"method\":\"getHistoryForRecord\",\"args\":[\""+barScan+"\"],\"chaincodeVer\":\"v1\"}");
+            RequestBody body = RequestBody.create(mediaType, "{\"channel\":\"ownerchannel\",\"chaincode\":\"postal1\",\"method\":\"initLuggage\"," +
+                    "\"args\":[\""+data.getLuggageScanId()+"\"," +
+                    "\""+data.getLuggageColor()+"\","+
+                    "\""+data.getOwner()+"\","+
+                    "\""+data.getReciver()+"\","+
+                    "\""+data.getCarrier()+"\","+
+                    "\""+data.getStatus()+"\","+
+                    "\""+data.getDate()+"\""+
+                    "],\"chaincodeVer\":\"v2\"}");
+
+            System.out.println("{\"channel\":\"scmchannel\",\"chaincode\":\"postal1\",\"method\":\"initProduct\"," +
+                    "\"args\":[\""+data.getLuggageScanId()+"\"," +
+                    "\""+data.getLuggageColor()+"\","+
+                    "\""+data.getOwner()+"\","+
+                    "\""+data.getReciver()+"\","+
+                    "\""+data.getCarrier()+"\","+
+                    "\""+data.getStatus()+"\""+
+                    "\""+data.getDate()+"\""+
+                    "],\"chaincodeVer\":\"v2\"}");
+
+
+            Request request = new Request.Builder()
+                    .url(server+":"+port+"/bcsgw/rest/v1/transaction/invocation")
+                    .post(body)
+                    .addHeader("Content-Type", "application/json")
+                    .addHeader("Cache-Control", "no-cache")
+                    .build();
+
+            Response response = client.newCall(request).execute();
+
+
+            String response_string = response.body().string();
+            System.out.println(response_string);
+            isAddProductSuccess = isAddProduct(response_string);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return isAddProductSuccess;
     }
 
 
@@ -100,41 +158,54 @@ public class DataMan  {
                     JSONObject transactionDetails = (JSONObject)transactionIterator.next();
                     item_data.setTransaction_id(transactionDetails.get("TxId").toString());
                     JSONObject transactionDetails1 = (JSONObject) transactionDetails.get("Value");
-                    item_data.setChassisNumber(transactionDetails1.get("chassisNumber").toString());
-                    item_data.setManufacturer(transactionDetails1.get("manufacturer").toString());
-                    item_data.setModel(transactionDetails1.get("model").toString());
-                    item_data.setAssemblyDate(transactionDetails1.get("assemblyDate").toString());
                     item_data.setOwner(transactionDetails1.get("owner").toString());
+                    item_data.setReciver(transactionDetails1.get("receiver").toString());
+                    item_data.setStatus(transactionDetails1.get("status").toString());
+                    item_data.setCarrier(transactionDetails1.get("carrier").toString());
                     item_data.setValid(true);
                 }
             }
 
-
-            //item_data.setTransaction_id(transactionResult.get("TxId").toString());
-           /* item_data.setDocType();
-            item_data.setChassisNumber();
-            item_data.setManufacturer();
-            item_data.setModel();
-            item_data.setAssemblyDate();
-            item_data.setOwner();*/
-           /* if(transactionResult.size()>0){
-                System.out.print("Im here");
-                isValid = true;
-            }*/
         }catch(Exception e){
             e.printStackTrace();
         }
         return item_data;
     }
 
+
+    private String isAddProduct(String response_string){
+        String isSuccess = "";
+        try {
+            item_data = new Data();
+            JSONParser parser = new JSONParser();
+            Object obj = parser.parse(response_string);
+            JSONObject jo = (JSONObject) obj;
+            String returnCode =  jo.get("returnCode").toString();
+            if(returnCode.equalsIgnoreCase("Success")){
+                isSuccess = "true";
+            }else if(returnCode.equalsIgnoreCase("Failure")){
+                String info =  jo.get("info").toString();
+                if(info.contains("This product already exists")){
+                    isSuccess = "duplicate";
+                }
+            }else{
+                isSuccess = "false";
+            }
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return isSuccess;
+    }
+
     public static void main(String [] args){
         DataMan dm = new DataMan();
         //dm.getTransactions("1231231231");
-        dm.isTrasactionValid("{\n" +
-                "\t\"returnCode\": \"Success\",\n" +
-                "\t\"result\": \"[{\\\"TxId\\\":\\\"b4d1d1bdf790da7f2352c1c8c30af72eafc9aa04f559eb9b85c53db652ccbcac\\\", \\\"Value\\\":{\\\"docType\\\":\\\"vehicle\\\",\\\"chassisNumber\\\":\\\"876543\\\",\\\"manufacturer\\\":\\\"audi\\\",\\\"model\\\":\\\"3\\\",\\\"assemblyDate\\\":22022018,\\\"airbagSerialNumber\\\":\\\"airbag3457\\\",\\\"owner\\\":\\\"shikhar\\\",\\\"recall\\\":true,\\\"recallDate\\\":22022018}, \\\"Timestamp\\\":\\\"2018-05-17 19:08:36.01 +0000 UTC\\\", \\\"IsDelete\\\":\\\"false\\\"}]\",\n" +
-                "\t\"info\": null\n" +
-                "}");
+        System.out.print(dm.isAddProduct("{\n" +
+                "\t\"returnCode\": \"Failure\",\n" +
+                "\t\"info\": \"Proposal not pass. ErrorMsg: Peer peer0.manufacturer.com, status: \\\"FAILURE\\\", Messages: \\\"Sending proposal to peer0.manufacturer.com failed because of: gRPC failure=Status{code=UNKNOWN, description=chaincode error (status: 500, message: This product already exists: K17-00101770), cause=null}\\\", Was verified: \\\"false\\\". .\",\n" +
+                "\t\"transactionID\": \"6b341f59e7190bfc9d66732c080f497319a8129fbce97a9140f1fdfa26b69888\"\n" +
+                "}"));
         //876543
     }
 

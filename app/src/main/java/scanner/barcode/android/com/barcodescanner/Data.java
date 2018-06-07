@@ -7,12 +7,15 @@ public class Data {
 
     private String transaction_id;
     private String docType;
-    private String chassisNumber;
-    private String manufacturer;
-    private String model;
-    private String assemblyDate;
+    private String luggageScanId;
+    private String luggageColor;
     private String owner;
-    private boolean isValid;
+    private String reciver;
+    private String carrier;
+    private String status;
+    private String date;
+
+    //getters and setters
 
     public String getTransaction_id() {
         return transaction_id;
@@ -30,36 +33,20 @@ public class Data {
         this.docType = docType;
     }
 
-    public String getChassisNumber() {
-        return chassisNumber;
+    public String getLuggageScanId() {
+        return luggageScanId;
     }
 
-    public void setChassisNumber(String chassisNumber) {
-        this.chassisNumber = chassisNumber;
+    public void setLuggageScanId(String luggageScanId) {
+        this.luggageScanId = luggageScanId;
     }
 
-    public String getManufacturer() {
-        return manufacturer;
+    public String getLuggageColor() {
+        return luggageColor;
     }
 
-    public void setManufacturer(String manufacturer) {
-        this.manufacturer = manufacturer;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
-    }
-
-    public String getAssemblyDate() {
-        return assemblyDate;
-    }
-
-    public void setAssemblyDate(String assemblyDate) {
-        this.assemblyDate = assemblyDate;
+    public void setLuggageColor(String luggageColor) {
+        this.luggageColor = luggageColor;
     }
 
     public String getOwner() {
@@ -70,6 +57,38 @@ public class Data {
         this.owner = owner;
     }
 
+    public String getReciver() {
+        return reciver;
+    }
+
+    public void setReciver(String reciver) {
+        this.reciver = reciver;
+    }
+
+    public String getCarrier() {
+        return carrier;
+    }
+
+    public void setCarrier(String carrier) {
+        this.carrier = carrier;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
     public boolean isValid() {
         return isValid;
     }
@@ -77,4 +96,10 @@ public class Data {
     public void setValid(boolean valid) {
         isValid = valid;
     }
+
+    private boolean isValid;
+
+
+
+
 }

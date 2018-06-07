@@ -1,11 +1,16 @@
 package scanner.barcode.android.com.barcodescanner;
 
+
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.preference.PreferenceManager;
+
+
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,6 +18,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.google.zxing.Result;
 
@@ -26,6 +32,9 @@ public class MainActivity extends AppCompatActivity implements ZXingScannerView.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setIcon(R.drawable.oracle);
     }
 
     @Override
@@ -41,8 +50,6 @@ public class MainActivity extends AppCompatActivity implements ZXingScannerView.
             Intent i = new Intent(this, SettingsActivity.class);
             startActivity(i);
 
-            System.out.println(item.getItemId());
-
 
         return super.onOptionsItemSelected(item);
     }
@@ -52,6 +59,16 @@ public class MainActivity extends AppCompatActivity implements ZXingScannerView.
         setContentView(zXingScannerView);
         zXingScannerView.setResultHandler(this);
         zXingScannerView.startCamera();
+    }
+
+    public void add(View view){
+        Intent i = new Intent(this, AddProductActivity.class);
+        startActivity(i);
+    }
+
+    public void timeline(View view){
+        Intent i = new Intent(this, timeline_activity.class);
+        startActivity(i);
     }
 
     public void getTable(View view){
@@ -81,8 +98,9 @@ public class MainActivity extends AppCompatActivity implements ZXingScannerView.
                 SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                 String server = preferences.getString("server_name", "http://0.0.0.0");
                 String rest_method = preferences.getString("rest_method", "get");
-                System.out.println(server);
-                String [] result_array = new String[]{server, rest_method, result.toString()};
+                Integer port_number = preferences.getInt("server_port", 1000);
+
+                String [] result_array = new String[]{result.toString(), server, port_number.toString(), rest_method};
                 new ValidateBarcodeScan().execute(result_array);
             }
         });
@@ -93,28 +111,39 @@ public class MainActivity extends AppCompatActivity implements ZXingScannerView.
     }
 
     private void validationDialog(Data validTransactionDetails){
-
-
         AlertDialog.Builder alertValidateBuilder = new AlertDialog.Builder(this);
         alertValidateBuilder.setTitle("Validation Result");
         if(validTransactionDetails.isValid()){
             alertValidateBuilder.setMessage("Transaction Validity : "+validTransactionDetails.isValid()
                     +"\nTransaction ID : "+validTransactionDetails.getTransaction_id()
-                    +"\nProduct Owner : "+validTransactionDetails.getOwner()
-                    +"\nProduct Model : "+validTransactionDetails.getModel()
-                    +"\nProduct Assembly: "+validTransactionDetails.getAssemblyDate());
-        }else{
-            alertValidateBuilder.setMessage("Transaction Validity : "+validTransactionDetails.isValid()
-                );
+                    +"\nOwner : "+validTransactionDetails.getOwner()
+                    +"\nReceiver : "+validTransactionDetails.getReciver()
+                    +"\nCarrier: "+validTransactionDetails.getCarrier()
+                    +"\nStatus: "+validTransactionDetails.getStatus());
+            alertValidateBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
 
+                }
+            });
+            alertValidateBuilder.setPositiveButton("Timeline", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    startActivity(new Intent(((Dialog)dialog).getContext(), timeline_activity.class));
+                }
+            });
+
+        }else{
+            alertValidateBuilder.setMessage("Transaction Validity : "+validTransactionDetails.isValid());
+            alertValidateBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                }
+            });
         }
 
-        alertValidateBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
 
-            }
-        });
         AlertDialog validationAlert = alertValidateBuilder.create();
         validationAlert.show();
     }
@@ -132,7 +161,7 @@ public class MainActivity extends AppCompatActivity implements ZXingScannerView.
             Data isValid = null ;
             try {
                 System.out.println("Background Params: "+params.toString());
-                isValid = new DataMan().getTransactions(params[2].toString(), params[1].toString(), params[0].toString());
+                isValid = new DataMan().getTransactions(params[0].toString(), params[1].toString(), params[2].toString(), params[3].toString());
                 Thread.sleep(2000);
 
             } catch (InterruptedException e) {
@@ -145,7 +174,6 @@ public class MainActivity extends AppCompatActivity implements ZXingScannerView.
         @Override
         protected void onPostExecute(Data result) {
             System.out.println(result);
-
                 validationDialog(result);
 
 

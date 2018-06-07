@@ -39,13 +39,15 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     compile 'me.dm7.barcodescanner:zxing:1.9.8'
+    compile 'com.journeyapps:zxing-android-embedded:3.6.0'
     // https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp
     compile group: 'com.squareup.okhttp3', name: 'okhttp', version: '3.10.0'
     // https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple
     compile group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1'
     // https://mvnrepository.com/artifact/org.json/json
     compile group: 'org.json', name: 'json', version: '20090211'
-
+    compile 'com.android.support:design:23.0.1'
+    compile 'com.github.vipulasri:timelineview:1.0.6'
 
     implementation 'com.android.support:design:27.1.1'
 }

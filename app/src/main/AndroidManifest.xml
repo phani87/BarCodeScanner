@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,7 +23,7 @@
         </activity>
         <activity
             android:name=".GetTableActivity"
-            android:parentActivityName=".MainActivity"></activity>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings"
@@ -30,6 +32,18 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="scanner.barcode.android.com.barcodescanner.MainActivity" />
         </activity>
+        <activity
+            android:name=".AddProductActivity"
+            android:label="@string/title_activity_add_product"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".timeline_activity"
+            android:label="@string/title_activity_timeline_activity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".content_timeline"
+            android:label="@string/title_activity_content_timeline"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

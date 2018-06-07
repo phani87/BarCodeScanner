@@ -11,6 +11,10 @@
     <!-- NOTE: Hide buttons to simplify the UI. Users can touch outside the dialog to
          dismiss it. -->
     <!-- NOTE: ListPreference's summary should be set to its value by the activity code. -->
+    <PreferenceCategory android:title="Blockchain Sever">
+
+    </PreferenceCategory>
+
     <EditTextPreference
         android:capitalize="words"
         android:defaultValue="@string/pref_default_display_name"
@@ -20,6 +24,12 @@
         android:selectAllOnFocus="true"
         android:singleLine="true"
         android:title="@string/pref_title_display_name" />
+
+    <scanner.barcode.android.com.barcodescanner.NumberPickerPreference
+        android:key="server_port"
+        android:title="Port Number"
+        android:defaultValue="1000" />
+
     <ListPreference
         android:defaultValue="0"
         android:entries="@array/pref_example_list_titles"

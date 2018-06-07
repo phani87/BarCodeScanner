@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_color_dark"
+    android:orientation="vertical"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp">
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/text_lColor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textColorHint="#ffffff">
+
+        <EditText
+            android:id="@+id/lColor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/luggage_color"
+            android:inputType="text"
+            android:textColor="#ffffff" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/text_lOwner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textColorHint="#ffffff">
+
+        <EditText
+            android:id="@+id/lOwner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/luggage_owner"
+            android:inputType="text"
+            android:textColor="#ffffff"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/text_lReceiver"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textColorHint="#ffffff">
+
+        <EditText
+            android:id="@+id/lReceiver"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/luggage_receiver"
+            android:inputType="text"
+            android:textColor="#ffffff"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/text_lCarrier"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:textColorHint="#ffffff">
+
+        <EditText
+            android:id="@+id/lCarrier"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/luggage_carrier"
+            android:inputType="text" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/text_lStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:textColorHint="#ffffff">
+
+        <EditText
+            android:id="@+id/lStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/luggage_status"
+            android:inputType="text"
+            android:textColor="#ffffff"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/text_lDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:textColorHint="#ffffff">
+
+        <EditText
+            android:id="@+id/lDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/luggage_date"
+            android:inputType="date"
+            android:textColor="#ffffff"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="58dp">
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/scan_button"
+            android:layout_width="51dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="end|bottom"
+            android:onClick="scanNow"
+            android:src="@drawable/camera"
+            app:backgroundTint="@android:color/holo_red_dark"
+            app:elevation="10dp" />
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/text_lScanId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:textColorHint="#ffffff">
+
+            <EditText
+                android:id="@+id/lScanId"
+                android:layout_width="260dp"
+                android:layout_height="match_parent"
+                android:hint="@string/scanned_luggage_id"
+                android:singleLine="true"
+                android:textColor="#ffffff" />
+        </android.support.design.widget.TextInputLayout>
+    </RelativeLayout>
+    <!-- <TextView
+            android:id="@+id/scan_format"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textIsSelectable="true"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/scan_button" />
+        <TextView
+            android:id="@+id/scan_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textIsSelectable="true"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/scan_format" />-->
+
+
+    <Button
+        android:id="@+id/add_product"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="28dp"
+        android:background="@color/actionbar_color"
+        android:onClick="addProduct"
+        android:text="@string/add_product"
+        android:textColor="@android:color/white" />
+
+
+</LinearLayout>

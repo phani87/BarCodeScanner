@@ -93,7 +93,7 @@
     <string name="scan">Scan</string>
     <string name="scan_bar_code">Scan Code</string>
     <string name="title_activity_timeline">timeline</string>
-    <string name="title_activity_timeline_activity"></string>
+    <string name="title_activity_timeline_activity">Secure Scan Timeline</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
 

@@ -93,12 +93,29 @@
             android:textColor="#ffffff"/>
     </android.support.design.widget.TextInputLayout>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="58dp">
+
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/date_button"
+            android:layout_width="51dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="end|bottom"
+            android:onClick="datepicker"
+            android:src="@drawable/calender_white"
+            app:backgroundTint="@android:color/holo_red_dark"
+            app:elevation="10dp" />
+
     <android.support.design.widget.TextInputLayout
         android:id="@+id/text_lDate"
-        android:layout_width="match_parent"
+        android:layout_width="289dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:textColorHint="#ffffff">
 
         <EditText
@@ -106,9 +123,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/luggage_date"
-            android:inputType="date"
+            android:inputType="text"
             android:textColor="#ffffff"/>
     </android.support.design.widget.TextInputLayout>
+    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -136,7 +154,7 @@
 
             <EditText
                 android:id="@+id/lScanId"
-                android:layout_width="260dp"
+                android:layout_width="289dp"
                 android:layout_height="match_parent"
                 android:hint="@string/scanned_luggage_id"
                 android:singleLine="true"
@@ -159,17 +177,26 @@
             android:layout_below="@id/scan_format" />-->
 
 
-    <Button
-        android:id="@+id/add_product"
-        android:layout_width="fill_parent"
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="28dp"
-        android:background="@color/actionbar_color"
-        android:onClick="addProduct"
-        android:text="@string/add_product"
-        android:textColor="@android:color/white" />
+        android:layout_gravity="end">
+
+        <Button
+            android:id="@+id/add_product"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="28dp"
+            android:background="@color/actionbar_color"
+            android:onClick="addProduct"
+            android:text="@string/add_product"
+            android:textColor="@android:color/white"
+            android:layout_gravity="end"/>
+
+    </android.support.v7.widget.LinearLayoutCompat>
+
 
 
 </LinearLayout>

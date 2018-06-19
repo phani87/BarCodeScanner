@@ -1,16 +1,22 @@
 package scanner.barcode.android.com.barcodescanner;
 
+
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AppCompatDialogFragment;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,10 +26,13 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.google.zxing.integration.android.IntentIntegrator;
 
+import java.util.Calendar;
+
 public class AddProductActivity extends AppCompatActivity {
 
     private String /*codeFormat*/codeContent;
     private TextView /*formatTxt,*/ contentTxt;
+    private TextView dateView;
 
     private String productScanId;
     private String productName;
@@ -32,12 +41,21 @@ public class AddProductActivity extends AppCompatActivity {
     private String productType;
     private boolean isValid;
 
+    private Calendar calendar;
+    private int year, month, day;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_product);
        /* formatTxt = (TextView)findViewById(R.id.scan_format);*/
         contentTxt = (TextView)findViewById(R.id.lScanId);
+        dateView = (TextView) findViewById(R.id.lDate);
+
+        calendar = Calendar.getInstance();
+        year = calendar.get(Calendar.YEAR);
+        showDate(year, month+1, day);
+
     }
 
     /**
@@ -52,6 +70,35 @@ public class AddProductActivity extends AppCompatActivity {
         integrator.setOrientationLocked(false);
         integrator.setCameraId(0);  // Use a specific camera of the device
         integrator.initiateScan();
+    }
+
+    /**
+     * event handler for datepicker button
+     * @param view view of the activity
+     */
+    public void datepicker(View view){
+        showDialog(999);
+//        AppCompatDialogFragment newFragment = new DatePickerFragment();
+//        newFragment.show(getSupportFragmentManager(), "datePicker");
+
+
+    }
+
+    @SuppressWarnings("deprecation")
+    public void setDate(View view) {
+        showDialog(999);
+        Toast.makeText(getApplicationContext(), "ca",
+                Toast.LENGTH_SHORT)
+                .show();
+    }
+
+    @Override
+    protected Dialog onCreateDialog(int id) {
+        if (id == 999) {
+            return new DatePickerDialog(this,
+                    myDateListener, year, month, day);
+        }
+        return null;
     }
 
     /**
@@ -175,4 +222,22 @@ public class AddProductActivity extends AppCompatActivity {
         }
     }
 
+    private DatePickerDialog.OnDateSetListener myDateListener = new
+            DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+                    // TODO Auto-generated method stub
+                    // arg1 = year
+                    // arg2 = month
+                    // arg3 = day
+                    showDate(i, i1+1, i2);
+                }
+
+
+            };
+
+    private void showDate(int year, int month, int day) {
+        dateView.setText(new StringBuilder().append(day).append("/")
+                .append(month).append("/").append(year));
+    }
 }

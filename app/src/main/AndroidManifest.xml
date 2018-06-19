@@ -35,7 +35,7 @@
         <activity
             android:name=".AddProductActivity"
             android:label="@string/title_activity_add_product"
-            android:theme="@style/AppTheme.NoActionBar" />
+           />
         <activity
             android:name=".timeline_activity"
             android:label="@string/title_activity_timeline_activity"

@@ -43,22 +43,6 @@
             android:textColor="#ffffff"/>
     </android.support.design.widget.TextInputLayout>
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/text_lReceiver"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:textColorHint="#ffffff">
-
-        <EditText
-            android:id="@+id/lReceiver"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/luggage_receiver"
-            android:inputType="text"
-            android:textColor="#ffffff"/>
-    </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/text_lCarrier"
@@ -77,7 +61,7 @@
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
-        android:id="@+id/text_lStatus"
+        android:id="@+id/text_lReceiver"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -85,13 +69,47 @@
         android:textColorHint="#ffffff">
 
         <EditText
-            android:id="@+id/lStatus"
+            android:id="@+id/lReceiver"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/luggage_status"
-            android:inputType="text"
-            android:textColor="#ffffff"/>
+            android:hint="@string/luggage_receiver"
+            android:inputType="text" />
     </android.support.design.widget.TextInputLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/text_lStatus"
+            android:layout_width="match_parent"
+            android:layout_height="77dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:textColorHint="#ffffff">
+
+            <TextView
+                style="@style/TextView.InputLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/luggage_status" />
+
+            <android.support.v7.widget.AppCompatSpinner
+                android:id="@+id/lStatus"
+                style="@style/Widget.AppCompat.Spinner.Underlined"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:spinnerMode="dialog" />
+
+
+        </android.support.design.widget.TextInputLayout>
+
+
+    </RelativeLayout>
+
+
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -103,11 +121,12 @@
             android:layout_width="51dp"
             android:layout_height="match_parent"
             android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
             android:layout_gravity="end|bottom"
             android:onClick="datepicker"
             android:src="@drawable/calender_white"
-            app:backgroundTint="@android:color/holo_red_dark"
+            app:backgroundTint="@color/actionbar_color"
             app:elevation="10dp" />
 
     <android.support.design.widget.TextInputLayout
@@ -115,6 +134,7 @@
         android:layout_width="289dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:textColorHint="#ffffff">
 
@@ -137,11 +157,12 @@
             android:layout_width="51dp"
             android:layout_height="match_parent"
             android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
             android:layout_gravity="end|bottom"
             android:onClick="scanNow"
             android:src="@drawable/camera"
-            app:backgroundTint="@android:color/holo_red_dark"
+            app:backgroundTint="@color/actionbar_color"
             app:elevation="10dp" />
 
         <android.support.design.widget.TextInputLayout
@@ -149,6 +170,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:textColorHint="#ffffff">
 

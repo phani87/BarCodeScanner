@@ -89,6 +89,10 @@ public class DataMan  {
 
         String isAddProductSuccess = "";
 
+        String date = data.getDate().replaceAll("\\.", "");
+
+        System.out.println("Dateeee>>>>>"+date);
+
 
         try{
             System.out.println("Barcode Scan: "+data.getLuggageScanId());
@@ -103,7 +107,7 @@ public class DataMan  {
                     "\""+data.getReciver()+"\","+
                     "\""+data.getCarrier()+"\","+
                     "\""+data.getStatus()+"\","+
-                    "\""+data.getDate()+"\""+
+                    "\""+date+"\""+
                     "],\"chaincodeVer\":\"v2\"}");
 
             System.out.println("{\"channel\":\"scmchannel\",\"chaincode\":\"postal1\",\"method\":\"initProduct\"," +

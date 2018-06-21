@@ -66,6 +66,11 @@ public class MainActivity extends AppCompatActivity implements ZXingScannerView.
         startActivity(i);
     }
 
+    public void handshake(View view){
+        Intent i = new Intent(this, HandshakeActivity.class);
+        startActivity(i);
+    }
+
     public void timeline(View view){
         Intent i = new Intent(this, timeline_activity.class);
         startActivity(i);

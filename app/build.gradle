@@ -48,6 +48,8 @@ dependencies {
     compile group: 'org.json', name: 'json', version: '20090211'
     compile 'com.android.support:design:23.0.1'
     compile 'com.github.vipulasri:timelineview:1.0.6'
+    compile 'com.getbase:floatingactionbutton:1.10.1'
+    compile 'com.rengwuxian.materialedittext:library:2.1.4'
 
     implementation 'com.android.support:design:27.1.1'
 }

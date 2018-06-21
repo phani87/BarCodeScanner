@@ -185,4 +185,12 @@
     </string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_content_timeline">content_timeline</string>
+
+    <string-array name="transit_status">
+        <item>Start</item>
+        <item>Handover</item>
+        <item>End</item>
+    </string-array>
+    <string name="title_activity_handshake">Transfer Luggage</string>
+    <string name="title_activity_transfer_valid_luggage">Handshake</string>
 </resources>

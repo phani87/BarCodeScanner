@@ -16,8 +16,10 @@ import android.support.v7.app.AppCompatDialogFragment;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
@@ -55,6 +57,16 @@ public class AddProductActivity extends AppCompatActivity {
         calendar = Calendar.getInstance();
         year = calendar.get(Calendar.YEAR);
         showDate(year, month+1, day);
+
+
+        Spinner spinner = (Spinner) findViewById(R.id.lStatus);
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.transit_status, android.R.layout.simple_spinner_item);
+        // Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        spinner.setAdapter(adapter);
 
     }
 
@@ -222,6 +234,10 @@ public class AddProductActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Adding datepicker activity listener
+     */
+
     private DatePickerDialog.OnDateSetListener myDateListener = new
             DatePickerDialog.OnDateSetListener() {
                 @Override
@@ -237,7 +253,7 @@ public class AddProductActivity extends AppCompatActivity {
             };
 
     private void showDate(int year, int month, int day) {
-        dateView.setText(new StringBuilder().append(day).append("/")
-                .append(month).append("/").append(year));
+        dateView.setText(new StringBuilder().append(year).append(".")
+                .append(month).append(".").append(day));
     }
 }

@@ -34,8 +34,7 @@
         </activity>
         <activity
             android:name=".AddProductActivity"
-            android:label="@string/title_activity_add_product"
-           />
+            android:label="@string/title_activity_add_product" />
         <activity
             android:name=".timeline_activity"
             android:label="@string/title_activity_timeline_activity"
@@ -43,6 +42,14 @@
         <activity
             android:name=".content_timeline"
             android:label="@string/title_activity_content_timeline"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".HandshakeActivity"
+            android:label="@string/title_activity_handshake"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".TransferValidLuggage"
+            android:label="@string/title_activity_transfer_valid_luggage"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

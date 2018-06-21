@@ -1,64 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_color_dark"
     tools:context=".MainActivity">
 
 
-    <!--<Button
-        android:layout_width="149dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginBottom="29dp"
-        android:layout_marginEnd="24dp"
-        android:onClick="scan"
-        android:text="@string/scan_button"
-        android:textColor="?attr/colorBackgroundFloating"
-        android:background="@drawable/rounded_button"
-        android:textStyle="bold" />
--->
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/add_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/scan_button"
-        android:layout_gravity="end|bottom"
-        android:layout_marginEnd="88dp"
-        android:layout_marginRight="10dp"
-        android:onClick="add"
-        android:src="@drawable/add"
-        app:backgroundTint="@android:color/holo_red_dark"
-        app:elevation="14dp" />
+    <!--<android.support.design.widget.FloatingActionButton-->
+        <!--android:id="@+id/scan_button"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentEnd="true"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_alignTop="@+id/handshake_button"-->
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/scan_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_gravity="end|bottom"
-        android:layout_marginBottom="25dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginEnd="33dp"
-        android:onClick="scan"
-        android:src="@drawable/camera"
-        app:backgroundTint="@android:color/holo_red_dark"
-        app:elevation="14dp" />
+        <!--android:layout_gravity="end|bottom"-->
+        <!--android:layout_marginEnd="15dp"-->
+        <!--android:layout_marginRight="15dp"-->
 
-    <!-- <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:textAppearance="@color/colorPrimaryDark"
-        android:text="Ready"
-        android:id="@+id/tvResult"
-        android:layout_gravity="top"
-        />-->
+        <!--android:onClick="scan"-->
+        <!--android:src="@drawable/camera"-->
+        <!--app:backgroundTint="@android:color/holo_red_dark"-->
+        <!--app:elevation="14dp" />-->
+
+
+    <!--<android.support.design.widget.FloatingActionButton-->
+        <!--android:id="@+id/add_button"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentEnd="true"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_alignTop="@+id/scan_button"-->
+        <!--android:layout_gravity="end|bottom"-->
+        <!--android:layout_marginEnd="65dp"-->
+        <!--android:layout_marginRight="65dp"-->
+        <!--android:onClick="add"-->
+        <!--android:src="@drawable/add"-->
+        <!--app:backgroundTint="@android:color/holo_red_dark"-->
+        <!--app:elevation="14dp" />-->
+
+
+    <!--<android.support.design.widget.FloatingActionButton-->
+        <!--android:id="@+id/handshake_button"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_alignParentEnd="true"-->
+
+        <!--android:layout_gravity="end|bottom"-->
+        <!--android:layout_marginBottom="24dp"-->
+        <!--android:layout_marginEnd="120dp"-->
+        <!--android:onClick="handshake"-->
+        <!--android:src="@drawable/handshake"-->
+        <!--app:backgroundTint="@android:color/holo_red_dark"-->
+        <!--app:elevation="14dp" />-->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.getbase.floatingactionbutton.FloatingActionsMenu
+            android:id="@+id/left_labels"
+            fab:fab_addButtonColorNormal="@color/actionbar_color"
+            fab:fab_addButtonColorPressed="@color/viewfinder_laser"
+            fab:fab_addButtonPlusIconColor="@color/white"
+            fab:fab_labelStyle="@style/menu_labels_style"
+            fab:fab_labelsPosition="left"
+            android:layout_width="match_parent"
+            app:fab_addButtonSize="mini"
+            android:layout_alignEnd="@+id/scan_button"
+            android:layout_alignRight="@+id/scan_button"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+
+            >
+
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                fab:fab_colorNormal="@color/actionbar_color"
+                fab:fab_colorPressed="@color/viewfinder_laser"
+                fab:fab_title="Scan"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/camera"
+                android:onClick="scan"/>
+
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                fab:fab_colorNormal="@color/actionbar_color"
+                fab:fab_colorPressed="@color/viewfinder_laser"
+                fab:fab_title="Transfer Luggage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:src="@drawable/handshake"
+                android:onClick="handshake"/>
+
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                fab:fab_colorNormal="@color/actionbar_color"
+                fab:fab_colorPressed="@color/viewfinder_laser"
+                fab:fab_title="Add Luggage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:src="@drawable/add"
+                android:onClick="add"/>
+
+        </com.getbase.floatingactionbutton.FloatingActionsMenu>
+
+
+    </RelativeLayout>
+
+
+
+
 
 </RelativeLayout>

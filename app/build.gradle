@@ -50,6 +50,8 @@ dependencies {
     compile 'com.github.vipulasri:timelineview:1.0.6'
     compile 'com.getbase:floatingactionbutton:1.10.1'
     compile 'com.rengwuxian.materialedittext:library:2.1.4'
+    compile 'com.github.ganfra:material-spinner:2.0.0'
+
 
     implementation 'com.android.support:design:27.1.1'
 }

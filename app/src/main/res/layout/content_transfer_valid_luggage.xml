@@ -1,24 +1,97 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".TransferValidLuggage"
-    tools:showIn="@layout/activity_transfer_valid_luggage">
+    android:layout_alignParentStart="true"
+    android:scrollbarStyle="outsideOverlay"
+    android:background="@color/background_color_dark"
+    tools:context=".MainActivity">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="app:met_floatingLabel=&quot;highlight&quot;"
-        android:textColor="#888888"
-        android:textSize="14sp" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        >
 
-    <com.rengwuxian.materialedittext.MaterialEditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Highlight Floating Label"
-        app:met_floatingLabel="highlight"/>
 
-</android.support.constraint.ConstraintLayout>
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/transID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Transaction ID"
+            app:met_floatingLabel="highlight"
+
+            style="@style/FromTextColor"/>
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/carrier"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Carrier"
+            app:met_floatingLabel="highlight"
+            style="@style/FromTextColor"/>
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/owner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Owner"
+            app:met_floatingLabel="highlight"
+            style="@style/FromTextColor"/>
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/receiver"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Receiver"
+            app:met_floatingLabel="highlight"
+            style="@style/FromTextColor"/>
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/current_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Current Status"
+            app:met_floatingLabel="highlight"
+            style="@style/FromTextColor"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <!--<android.support.v7.widget.AppCompatSpinner-->
+                <!--android:id="@+id/update"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:spinnerMode="dropdown"-->
+                <!--android:layout_alignParentStart="true"-->
+                <!--android:layout_alignParentLeft="true"-->
+                <!--android:layout_marginTop="10dp" />-->
+
+            <fr.ganfra.materialspinner.MaterialSpinner
+                android:id="@+id/update"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:ms_multiline="true"
+                app:ms_hint="Update Status"
+                app:ms_enableFloatingLabel="true"
+                app:ms_floatingLabelText="Update Status"
+                app:ms_thickness="0.1dp"
+                app:ms_arrowSize="14dp"
+                app:ms_alignLabels="false"
+                app:ms_baseColor="@color/black_semi_transparent"
+                app:ms_highlightColor="#ff0000"
+                app:ms_floatingLabelColor="@color/black_semi_transparent"
+                android:spinnerMode="dropdown"
+              />
+
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+</ScrollView>

@@ -193,4 +193,5 @@
     </string-array>
     <string name="title_activity_handshake">Transfer Luggage</string>
     <string name="title_activity_transfer_valid_luggage">Handshake</string>
+    <string name="title_activity_timeline_scan">TimelineScan</string>
 </resources>

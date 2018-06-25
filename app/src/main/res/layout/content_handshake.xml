@@ -19,30 +19,43 @@
         android:backgroundTint="@color/actionbar_color"
         android:drawableLeft="@drawable/camera"
         android:gravity="center|center_vertical"
+        android:onClick="scanLuggageCode"
         android:text="@string/scan"
-        android:onClick="scanLuggageCode"/>
+        android:textColor="@color/white"
+        />
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/text_scan"
-        android:layout_width="350dp"
-        android:layout_height="77dp"
-        android:layout_alignParentStart="false"
-        android:layout_alignParentLeft="false"
-        android:layout_centerInParent="true"
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/scanId"
+        style="@style/FromTextColor"
+        android:layout_width="245dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="138dp"
-        android:textColorHint="#ffffff">
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="151dp"
+        android:hint="@string/scanned_luggage_id"
+        app:met_floatingLabel="highlight" />
 
-        <EditText
-            android:id="@+id/scanId"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/scanned_luggage_id"
-            android:inputType="text"
-            android:textColor="#000000"/>
+    <!--<android.support.design.widget.TextInputLayout-->
+        <!--android:id="@+id/text_scan"-->
+        <!--android:layout_width="350dp"-->
+        <!--android:layout_height="77dp"-->
+        <!--android:layout_alignParentStart="false"-->
+        <!--android:layout_alignParentLeft="false"-->
+        <!--android:layout_centerInParent="true"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_marginTop="138dp"-->
+        <!--android:textColorHint="#ffffff">-->
+
+        <!--<EditText-->
+            <!--android:id="@+id/scanId"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:hint="@string/scanned_luggage_id"-->
+            <!--android:inputType="text"-->
+            <!--android:textColor="#000000"/>-->
 
 
-    </android.support.design.widget.TextInputLayout>
+    <!--</android.support.design.widget.TextInputLayout>-->
 
 
 </RelativeLayout>

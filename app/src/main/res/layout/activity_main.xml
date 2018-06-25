@@ -83,14 +83,15 @@
             >
 
             <com.getbase.floatingactionbutton.FloatingActionButton
-                fab:fab_colorNormal="@color/actionbar_color"
-                fab:fab_colorPressed="@color/viewfinder_laser"
-                fab:fab_title="Scan"
-
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/camera"
-                android:onClick="scan"/>
+                android:adjustViewBounds="true"
+                android:onClick="timelineScan"
+                android:src="@drawable/timeline"
+                fab:fab_colorNormal="@color/actionbar_color"
+                fab:fab_colorPressed="@color/viewfinder_laser"
+                fab:fab_title="Timeline"
+                android:scaleType="center"/>
 
             <com.getbase.floatingactionbutton.FloatingActionButton
                 fab:fab_colorNormal="@color/actionbar_color"

@@ -13,6 +13,7 @@
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="android:spinnerStyle">@style/spinnerTheme</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
@@ -38,6 +39,18 @@
     <style name="menu_labels_style">
         <item name="android:background">@drawable/fab_label_background</item>
         <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="FromTextColor">
+        <item name="met_textColor">#ffffff</item>
+        <item name="met_floatingLabelTextColor">@color/blackText</item>
+        <item name="met_baseColor">@color/blackText</item>
+        <item name="met_primaryColor">#ff0000</item>
+    </style>
+
+    <style name="spinnerTheme" parent="">
+        <!--<item name="ms_highlightColor=">#ff0000</item>-->
+        <!--<item name="ms_baseColor=">@color/blackText</item>-->
     </style>
 
 </resources>

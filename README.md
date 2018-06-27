@@ -5,13 +5,21 @@ A custom android app which scans barcode of a product and can be added to Oracle
 
 # Oracle Blockchain Cloud Service 
 A new blockchain cloud service launched by Oracle is based on Hyperledger fabric and is avaiable as service which can be instantiated once you can create a cloud account at http://www.cloud.oracle.com
-![]()
+![](Images/BCS.png)
 
 # Android app built for Nexus 5
-![]()
-![]()
-![]()
-![]()
+
+Screen | Image
+------------- | -------------
+Customer App Icon  | <img src="Images/apps.png" height="250" width="150" >
+Home Screen | <img src="Images/app1.png" height="250" width="150" >
+Blockchain Setting Screen | <img src="Images/app2.png" height="250" width="150" >
+Scanner Screen | <img src="Images/app3.png" height="250" width="150" >
+Add Product Screen | <img src="Images/app4.png" height="250" width="150" >
+Transfer Screen | <img src="Images/app5.png" height="250" width="150" >
+Timeline Screen | <img src="Images/app6.png" height="250" width="150" >
+
+
 
 # References
 1. https://hyperledger-fabric.readthedocs.io/en/release-1.1/

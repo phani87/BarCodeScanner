@@ -3,7 +3,7 @@ package scanner.barcode.android.com.barcodescanner;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class Data {
+public class Data implements java.io.Serializable{
 
     private String transaction_id;
     private String docType;

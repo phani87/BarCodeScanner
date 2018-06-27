@@ -18,48 +18,23 @@ import com.google.zxing.integration.android.IntentResult;
 
 import java.util.ArrayList;
 
-public class HandshakeActivity extends AppCompatActivity {
+public class TimelineScan extends AppCompatActivity {
 
     private TextView scanId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_handshake);
+        setContentView(R.layout.activity_timeline_scan);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        scanId = findViewById(R.id.scanId);
+
+        scanId = findViewById(R.id.scanId_timeline);
+
     }
 
-    public void scanLuggageCode(View view){
-        IntentIntegrator integrator = new IntentIntegrator(this);
-        //integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE);
-        integrator.setPrompt(this.getString(R.string.scan_bar_code));
-        // Wide scanning rectangle, may work better for 1D barcodes
-        integrator.setOrientationLocked(false);
-        integrator.setCameraId(0);  // Use a specific camera of the device
-        integrator.initiateScan();
-    }
-
-    public void transferLuggageActivity(ArrayList<Data> validTransactionDetails){
-        if(validTransactionDetails.size()>0){
-            Intent i = new Intent(this, TransferValidLuggage.class);
-            i.putExtra("transaction_id", validTransactionDetails.get(0).getTransaction_id());
-            i.putExtra("scan_id", scanId.getText().toString());
-            i.putExtra("carrier", validTransactionDetails.get(0).getCarrier());
-            i.putExtra("owner", validTransactionDetails.get(0).getOwner());
-            i.putExtra("receiver", validTransactionDetails.get(0).getReciver());
-            i.putExtra("status", validTransactionDetails.get(0).getStatus());
-            startActivity(i);
-        }else{
-            Toast.makeText(getApplicationContext(), "Not Valid Code",
-                    Toast.LENGTH_SHORT)
-                    .show();
-        }
-    }
-
-    public void forward(View view){
+    public void showTimeLine(View view){
 
         System.out.println("Scanning >>>>" +scanId.getText().toString());
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
@@ -69,8 +44,51 @@ public class HandshakeActivity extends AppCompatActivity {
 
         String [] result_array = new String[]{scanId.getText().toString(), server, port_number.toString(), rest_method};
         new ValidateBarcodeScan().execute(result_array);
-       // dm.getTransactions();
 
+//        Intent i = new Intent(this, TimelineView.class);
+//        startActivity(i);
+    }
+
+    public void transferLuggageActivity(ArrayList<Data> validTransactionDetails){
+
+        ArrayList<Data> transactions =new ArrayList<>();
+
+        transactions.addAll(validTransactionDetails);
+
+        System.out.println("Size of valid transactions >>> " + transactions.size());
+
+        Bundle bundle=new Bundle();
+        bundle.putSerializable("transactions",transactions);
+
+        Intent intent=new Intent(this, TimelineView.class);
+        intent.putExtras(bundle);
+        startActivity(intent);
+
+
+//        if(validTransactionDetails.isValid()){
+//            Intent i = new Intent(this, TransferValidLuggage.class);
+//            i.putExtra("transaction_id", validTransactionDetails.getTransaction_id());
+//            i.putExtra("carrier", validTransactionDetails.getCarrier());
+//            i.putExtra("owner", validTransactionDetails.getOwner());
+//            i.putExtra("receiver", validTransactionDetails.getReciver());
+//            i.putExtra("status", validTransactionDetails.getStatus());
+//            startActivity(i);
+//        }else{
+//            Toast.makeText(getApplicationContext(), "Not Valid Code",
+//                    Toast.LENGTH_SHORT)
+//                    .show();
+//        }
+    }
+
+
+    public void scanCodeforTimeline(View view){
+        IntentIntegrator integrator = new IntentIntegrator(this);
+        //integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE);
+        integrator.setPrompt(this.getString(R.string.scan_bar_code));
+        // Wide scanning rectangle, may work better for 1D barcodes
+        integrator.setOrientationLocked(false);
+        integrator.setCameraId(0);  // Use a specific camera of the device
+        integrator.initiateScan();
     }
 
 

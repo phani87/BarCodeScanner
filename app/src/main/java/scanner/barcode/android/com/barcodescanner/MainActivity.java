@@ -76,6 +76,13 @@ public class MainActivity extends AppCompatActivity implements ZXingScannerView.
         startActivity(i);
     }
 
+    public void timelineScan(View view){
+        Intent i = new Intent(this, TimelineScan.class);
+        startActivity(i);
+    }
+
+
+
     public void getTable(View view){
         Intent intent = new Intent(MainActivity.this, GetTableActivity.class );
         startActivity(intent);
@@ -106,7 +113,7 @@ public class MainActivity extends AppCompatActivity implements ZXingScannerView.
                 Integer port_number = preferences.getInt("server_port", 1000);
 
                 String [] result_array = new String[]{result.toString(), server, port_number.toString(), rest_method};
-                new ValidateBarcodeScan().execute(result_array);
+                //new ValidateBarcodeScan().execute(result_array);
             }
         });
         AlertDialog alert = alertBuilder.create();
@@ -160,29 +167,29 @@ public class MainActivity extends AppCompatActivity implements ZXingScannerView.
         zXingScannerView.startCamera();
     }*/
 
-    class ValidateBarcodeScan extends AsyncTask<String, String, Data> {
-        @Override
-        protected Data doInBackground(String... params) {
-            Data isValid = null ;
-            try {
-                System.out.println("Background Params: "+params.toString());
-                isValid = new DataMan().getTransactions(params[0].toString(), params[1].toString(), params[2].toString(), params[3].toString());
-                Thread.sleep(2000);
-
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
-            return isValid;
-        }
-
-        @Override
-        protected void onPostExecute(Data result) {
-            System.out.println(result);
-                validationDialog(result);
-
-
-        }
-    }
+//    class ValidateBarcodeScan extends AsyncTask<String, String, Data> {
+//        @Override
+//        protected Data doInBackground(String... params) {
+//            Data isValid = null ;
+//            try {
+//                System.out.println("Background Params: "+params.toString());
+//                isValid = new DataMan().getTransactions(params[0].toString(), params[1].toString(), params[2].toString(), params[3].toString());
+//                Thread.sleep(2000);
+//
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//
+//            return isValid;
+//        }
+//
+//        @Override
+//        protected void onPostExecute(Data result) {
+//            System.out.println(result);
+//                validationDialog(result);
+//
+//
+//        }
+//    }
 
 }

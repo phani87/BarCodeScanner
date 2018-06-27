@@ -414,11 +414,16 @@ func (t *BarcodeLuggageChainCode) updateLuggageCarrierInfo(stub shim.ChaincodeSt
 }
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
 func (t *BarcodeLuggageChainCode) updateStatus(stub shim.ChaincodeStubInterface, args []string) pb.Response {
-	if len(args) < 2 {
-		return shim.Error("Incorrect number of arguments. Expecting 2")
+	if len(args) < 3 {
+		return shim.Error("Incorrect number of arguments. Expecting 3")
 	}
 	scanId := args[0]
 	status := strings.ToLower(args[1])
+	carrier := strings.ToLower(args[2])
+	date,err := strconv.Atoi(args[3])
+	if err != nil {
+		return shim.Error("date must be a numeric string")
+	}	
 	
 	
 	// attempt to get the current luggage object by id.
@@ -438,6 +443,8 @@ func (t *BarcodeLuggageChainCode) updateStatus(stub shim.ChaincodeStubInterface,
 	}
 
 	updateLuggageCarrier.Status = status 
+	updateLuggageCarrier.Carrier = carrier
+	updateLuggageCarrier.Date = date
 
 	luggageJSONasBytes, _ := json.Marshal(updateLuggageCarrier)
 	err = stub.PutState(scanId, luggageJSONasBytes) //rewrite visit with Pharmacy bill details

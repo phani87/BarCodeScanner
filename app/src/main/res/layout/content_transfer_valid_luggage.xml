@@ -18,12 +18,11 @@
 
 
         <com.rengwuxian.materialedittext.MaterialEditText
-            android:id="@+id/transID"
+            android:id="@+id/setScanId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Transaction ID"
+            android:hint="Scan ID"
             app:met_floatingLabel="highlight"
-
             style="@style/FromTextColor"/>
 
         <com.rengwuxian.materialedittext.MaterialEditText
@@ -91,6 +90,8 @@
 
 
         </RelativeLayout>
+
+
 
 
     </LinearLayout>

@@ -50,6 +50,14 @@
         <activity
             android:name=".TransferValidLuggage"
             android:label="@string/title_activity_transfer_valid_luggage"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".TimelineScan"
+            android:label="@string/title_activity_timeline_scan"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".TimelineView"
+            android:label="@string/title_activity_timeline_view"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

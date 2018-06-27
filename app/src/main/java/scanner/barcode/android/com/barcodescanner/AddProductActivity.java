@@ -35,6 +35,7 @@ public class AddProductActivity extends AppCompatActivity {
     private String /*codeFormat*/codeContent;
     private TextView /*formatTxt,*/ contentTxt;
     private TextView dateView;
+    private  Spinner spinner;
 
     private String productScanId;
     private String productName;
@@ -59,7 +60,7 @@ public class AddProductActivity extends AppCompatActivity {
         showDate(year, month+1, day);
 
 
-        Spinner spinner = (Spinner) findViewById(R.id.lStatus);
+        spinner = (Spinner) findViewById(R.id.lStatus);
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.transit_status, android.R.layout.simple_spinner_item);
@@ -144,14 +145,14 @@ public class AddProductActivity extends AppCompatActivity {
         TextView luggageOwner= findViewById(R.id.lOwner);
         TextView luggage_receiver= findViewById(R.id.lReceiver);
         TextView luggage_carrier= findViewById(R.id.lCarrier);
-        TextView luggage_status= findViewById(R.id.lStatus);
+        String luggage_status=  spinner.getSelectedItem().toString();
         TextView luggage_date = findViewById(R.id.lDate);
 
         String [] addP = new String[]{contentTxt.getText().toString(),
                 luggage_color.getText().toString(),luggageOwner.getText().toString(),
                 luggage_receiver.getText().toString(),
                 luggage_carrier.getText().toString(),
-                luggage_status.getText().toString(),
+                luggage_status.toString(),
                 luggage_date.getText().toString()};
 
         //System.out.println("Scan-"+contentTxt.getText().toString()+"-PName-"+pNname.getText().toString());

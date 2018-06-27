@@ -9,15 +9,15 @@ A new blockchain cloud service launched by Oracle is based on Hyperledger fabric
 
 # Android app built for Nexus 5
 
-Screen | Image
-------------- | -------------
-Customer App Icon  | <img src="Images/apps.png" height="250" width="150" >
-Home Screen | <img src="Images/app1.png" height="250" width="150" >
-Blockchain Setting Screen | <img src="Images/app2.png" height="250" width="150" >
-Scanner Screen | <img src="Images/app3.png" height="250" width="150" >
-Add Product Screen | <img src="Images/app4.png" height="250" width="150" >
-Transfer Screen | <img src="Images/app5.png" height="250" width="150" >
-Timeline Screen | <img src="Images/app6.png" height="250" width="150" >
+Screen | Image| Code
+------------- | ------------- | -------------
+Customer App Icon  | <img src="Images/apps.png" height="250" width="150" > | ![](app/src/main/java/scanner/barcode/android/com/barcodescanner/MainActivity.java)
+Home Screen | <img src="Images/app1.png" height="250" width="150" > |
+Blockchain Setting Screen | <img src="Images/app2.png" height="250" width="150" > |
+Scanner Screen | <img src="Images/app3.png" height="250" width="150" > |
+Add Product Screen | <img src="Images/app4.png" height="250" width="150" > |
+Transfer Screen | <img src="Images/app5.png" height="250" width="150" > |
+Timeline Screen | <img src="Images/app6.png" height="250" width="150" > |
 
 
 

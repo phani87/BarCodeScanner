@@ -30,6 +30,10 @@ import com.google.zxing.integration.android.IntentIntegrator;
 
 import java.util.Calendar;
 
+/**
+ * AddProductActivity renders Add Product Screen and puts Product Data to Blockchain
+ */
+
 public class AddProductActivity extends AppCompatActivity {
 
     private String /*codeFormat*/codeContent;
@@ -139,6 +143,10 @@ public class AddProductActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * This method adds the product details to the Blockchain
+     * @param view
+     */
     public void addProduct(View view){
 
         TextView luggage_color= findViewById(R.id.lColor);

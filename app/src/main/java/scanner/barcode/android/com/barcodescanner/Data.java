@@ -3,6 +3,12 @@ package scanner.barcode.android.com.barcodescanner;
 import java.math.BigDecimal;
 import java.util.Date;
 
+/**
+ * Data is a POJO class that allows defines the object to be put into BCS
+ *
+ * You can redefine based on your requirements
+ */
+
 public class Data implements java.io.Serializable{
 
     private String transaction_id;

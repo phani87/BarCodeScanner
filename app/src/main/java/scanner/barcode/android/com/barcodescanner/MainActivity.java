@@ -54,6 +54,12 @@ public class MainActivity extends AppCompatActivity implements ZXingScannerView.
         return super.onOptionsItemSelected(item);
     }
 
+
+    /**
+     * Method to scan an Image
+     * Deprecated
+     * @param view
+     */
     public void scan(View view){
         zXingScannerView  = new ZXingScannerView(getApplicationContext());
         setContentView(zXingScannerView);
@@ -61,16 +67,31 @@ public class MainActivity extends AppCompatActivity implements ZXingScannerView.
         zXingScannerView.startCamera();
     }
 
+    /**
+     * Method to add new product
+     * Calls another activity AddProductActivity.class
+     * @param view
+     */
     public void add(View view){
         Intent i = new Intent(this, AddProductActivity.class);
         startActivity(i);
     }
 
+    /**
+     * Method to transfer product
+     * Calls another activity HandshakeActivity.class
+     * @param view
+     */
     public void handshake(View view){
         Intent i = new Intent(this, HandshakeActivity.class);
         startActivity(i);
     }
 
+    /**
+     *  Method to show timeline product
+     * Calls another activity timeline_activity.class
+     * @param view
+     */
     public void timeline(View view){
         Intent i = new Intent(this, timeline_activity.class);
         startActivity(i);

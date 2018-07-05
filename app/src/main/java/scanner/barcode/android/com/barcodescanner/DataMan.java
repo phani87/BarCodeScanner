@@ -253,7 +253,11 @@ public class DataMan  {
         return transactionsList;
     }
 
-
+    /**
+     * Checks if the product exists
+     * @param response_string
+     * @return
+     */
     private String isAddProduct(String response_string){
         String isSuccess = "";
         try {
@@ -279,6 +283,10 @@ public class DataMan  {
         return isSuccess;
     }
 
+    /**
+     * Test main
+     * @param args
+     */
     public static void main(String [] args){
         DataMan dm = new DataMan();
 //        //dm.getTransactions("1231231231");

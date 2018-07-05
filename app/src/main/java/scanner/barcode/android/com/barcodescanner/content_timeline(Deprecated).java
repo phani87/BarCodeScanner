@@ -7,6 +7,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+/**
+ * This is a deprecated class
+ */
+
 public class content_timeline extends AppCompatActivity {
 
     @Override

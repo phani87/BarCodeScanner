@@ -18,6 +18,9 @@ import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 
+/**
+ * Deprecated - Testing Table activity. Did not use it later
+ */
 public class GetTableActivity extends AppCompatActivity {/*
 
     private TableLayout mTableLayout;

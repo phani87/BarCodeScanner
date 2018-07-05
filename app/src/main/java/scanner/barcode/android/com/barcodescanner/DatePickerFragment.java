@@ -11,6 +11,9 @@ import android.widget.TextView;
 
 import java.util.Calendar;
 
+/**
+ * Datepicker class that renders datepicker
+ */
 public class DatePickerFragment extends AppCompatDialogFragment implements DatePickerDialog.OnDateSetListener {
 
 

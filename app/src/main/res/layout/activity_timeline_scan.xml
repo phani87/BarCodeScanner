@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        android:backgroundTint="@color/actionbar_color"
+        app:backgroundTint="@color/actionbar_color"
         app:srcCompat="@drawable/forward"
         android:onClick="showTimeLine"/>
 
